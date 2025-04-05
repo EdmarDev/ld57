@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://catc6xlq66st4"]
+
+[ext_resource type="Script" uid="uid://btm241f08floe" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://blbyk6v08f21s" path="res://player/fish.png" id="2_g1dw6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_rkbax")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_g1dw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, -1)
+shape = SubResource("CircleShape2D_1bvp3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 0)
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-32, -4)
+shape = SubResource("CircleShape2D_7mycd")
