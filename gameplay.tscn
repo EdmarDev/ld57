@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjyafkeljrhm5"]
+
+[ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_ej4tk"]
+[ext_resource type="PackedScene" uid="uid://catc6xlq66st4" path="res://player/player.tscn" id="2_oe8ih"]
+
+[node name="Gameplay" type="Node"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+scale = Vector2(0.615278, 0.615278)
+texture = ExtResource("1_ej4tk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_oe8ih")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)

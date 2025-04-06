@@ -1,15 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://knmea1a104a3"]
+[gd_scene load_steps=2 format=3 uid="uid://knmea1a104a3"]
 
-[ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://catc6xlq66st4" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cjyafkeljrhm5" path="res://gameplay.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node"]
 
-[node name="Test-bg" type="Sprite2D" parent="."]
-position = Vector2(0, -27)
-scale = Vector2(0.615278, 0.615278)
-texture = ExtResource("1_0xm2m")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Gameplay" parent="." instance=ExtResource("1_ig7tw")]
