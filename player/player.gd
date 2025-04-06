@@ -8,7 +8,15 @@ var _look_tween_duration := 0.2
 var _look_tween: Tween
 var _look_angle := 15
 
-@onready var _sprite = %Sprite as Sprite2D
+var _light_burst := load("res://player/light_burst.tscn") as PackedScene
+
+@onready var _sprite := %Sprite as Sprite2D
+@onready var _spit_pos := %SpitPosition as Marker2D
+
+func _process(_delta):
+	if Input.is_action_just_pressed("spit"):
+		_spit_light()
+
 
 func _physics_process(delta: float):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -39,8 +47,18 @@ func _physics_process(delta: float):
 	
 	move_and_slide()
 
+
 func _tween_look_at(angle: float):
 	if !!_look_tween:
 			_look_tween.kill()
 	_look_tween = create_tween()
 	_look_tween.tween_property(_sprite, "rotation", deg_to_rad(angle), _look_tween_duration)
+
+
+func _spit_light():
+	var burst := _light_burst.instantiate() as Node2D
+	get_parent().add_child(burst)
+	burst.global_position = _spit_pos.global_position
+	if _flipped:
+		burst.scale.x = -1
+	velocity = Vector2.ZERO

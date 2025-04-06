@@ -30,6 +30,10 @@ script = ExtResource("1_rkbax")
 unique_name_in_owner = true
 texture = ExtResource("2_g1dw6")
 
+[node name="SpitPosition" type="Marker2D" parent="Sprite"]
+unique_name_in_owner = true
+position = Vector2(89, -7)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, -1)
 shape = SubResource("CircleShape2D_1bvp3")
