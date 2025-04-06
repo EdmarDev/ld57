@@ -2,16 +2,20 @@ extends Node2D
 
 
 @export var _player: Player
-@export var _timer: Timer
 @export var _ground_marker: Marker2D
 @export var _spawn_range := 600.0
 @export var _min_spawn_delay: float
 @export var _max_spawn_delay: float
+var _timer: Timer
 
 var _light_pickup := load("res://pickup/light_pickup.tscn") as PackedScene
 
 func _ready():
+	_timer = Timer.new()
+	add_child(_timer)
+	_timer.wait_time = _min_spawn_delay
 	_timer.timeout.connect(_on_timer_timeout)
+	_timer.start()
 
 
 func _on_timer_timeout():

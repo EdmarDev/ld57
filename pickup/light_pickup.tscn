@@ -21,13 +21,13 @@ radius = 11.0
 blend_mode = 1
 light_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_vayye"]
+[sub_resource type="Gradient" id="Gradient_m3h7p"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.551948, 0.642857, 0.766234, 1)
 colors = PackedColorArray(0.51, 0.885667, 1, 1, 0.509804, 0.886275, 1, 1, 0.51, 0.885667, 1, 0.560784, 0.51, 0.885667, 1, 0.290196, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wrnuo"]
-gradient = SubResource("Gradient_vayye")
+gradient = SubResource("Gradient_m3h7p")
 width = 18
 height = 18
 fill = 1
