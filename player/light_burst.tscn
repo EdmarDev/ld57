@@ -1,21 +1,29 @@
-[gd_scene load_steps=11 format=3 uid="uid://r3yjq0u5bd32"]
+[gd_scene load_steps=14 format=3 uid="uid://r3yjq0u5bd32"]
 
 [ext_resource type="Texture2D" uid="uid://c7pdtdnxqyteu" path="res://player/light_particle_texture.tres" id="1_0itj5"]
+[ext_resource type="Script" uid="uid://ck0a7ifvb6mdu" path="res://player/light_burst.gd" id="1_el87l"]
 
-[sub_resource type="Gradient" id="Gradient_14j7k"]
+[sub_resource type="Gradient" id="Gradient_0itj5"]
 offsets = PackedFloat32Array(0, 0.733766)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0itj5"]
-gradient = SubResource("Gradient_14j7k")
-width = 192
-height = 192
+gradient = SubResource("Gradient_0itj5")
+width = 256
+height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_el87l"]
 blend_mode = 1
 light_mode = 1
+
+[sub_resource type="Curve" id="Curve_0itj5"]
+_data = [Vector2(0, 0.213483), 0.0, 0.0, 0, 0, Vector2(0.132353, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.330882, 0.359551), -0.619496, -0.619496, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_el87l"]
+curve = SubResource("Curve_0itj5")
 
 [sub_resource type="Curve" id="Curve_tnx6b"]
 _data = [Vector2(0.0147059, 0), 0.0, 0.0, 0, 0, Vector2(0.102941, 0.696629), 0.149082, 0.149082, 0, 0, Vector2(0.551471, 0.483146), -0.739398, -2.48315, 0, 0, Vector2(1, 0), -0.241278, 0.0, 0, 0]
@@ -36,9 +44,10 @@ tangential_accel_min = -10.0
 tangential_accel_max = 10.0
 damping_min = 20.0
 damping_max = 30.0
-scale_min = 0.4
-scale_max = 0.5
+scale_min = 0.25
+scale_max = 0.4
 scale_curve = SubResource("CurveTexture_cv3bs")
+alpha_curve = SubResource("CurveTexture_el87l")
 
 [sub_resource type="Animation" id="Animation_el87l"]
 length = 0.001
@@ -89,10 +98,10 @@ tracks/0/path = NodePath("PointLight2D:texture_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.5, 0.2]
+"values": [1.5, 1.0, 0.2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -127,10 +136,10 @@ tracks/3/path = NodePath("PointLight2D:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [5.0, 1.0]
+"values": [5.0, 4.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tnx6b"]
@@ -140,9 +149,11 @@ _data = {
 }
 
 [node name="LightBurst" type="Node2D"]
+script = ExtResource("1_el87l")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(45, 0)
+color = Color(0.04704, 0.832235, 1, 1)
 energy = 5.0
 texture = SubResource("GradientTexture2D_0itj5")
 texture_scale = 1.5
@@ -153,8 +164,7 @@ emitting = false
 amount = 16
 texture = ExtResource("1_0itj5")
 lifetime = 1.5
-one_shot = true
-explosiveness = 0.8
+explosiveness = 0.9
 randomness = 0.2
 process_material = SubResource("ParticleProcessMaterial_xhqwm")
 

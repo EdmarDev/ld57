@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://catc6xlq66st4"]
+[gd_scene load_steps=10 format=3 uid="uid://catc6xlq66st4"]
 
 [ext_resource type="Script" uid="uid://btm241f08floe" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://blbyk6v08f21s" path="res://player/fish.png" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://jtvj0fyuh15f" path="res://player/player_light.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://6erhhi6yldwb" path="res://player/killable.gd" id="4_yw30f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 20.0
@@ -23,7 +25,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
-motion_mode = 1
+collision_mask = 2
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
 script = ExtResource("1_rkbax")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -46,7 +50,20 @@ shape = SubResource("CircleShape2D_lquwl")
 position = Vector2(-32, -4)
 shape = SubResource("CircleShape2D_7mycd")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PlayerLight" type="PointLight2D" parent="." node_paths=PackedStringArray("_player")]
 energy = 3.0
 texture = SubResource("GradientTexture2D_g1dw6")
 texture_scale = 2.0
+script = ExtResource("3_g1dw6")
+_player = NodePath("..")
+_charged_color = Color(0.2425, 0.84875, 0.97, 1)
+_uncharged_color = Color(0.798721, 0.872677, 0.887664, 1)
+_charged_tex_scale = 2.2
+_uncharged_tex_scale = 2.0
+_charged_energy = 3.5
+_uncharged_energy = 3.0
+
+[node name="Killable" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_yw30f")
+_delete_parent = false

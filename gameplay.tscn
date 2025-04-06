@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjyafkeljrhm5"]
+[gd_scene load_steps=7 format=3 uid="uid://cjyafkeljrhm5"]
 
 [ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://catc6xlq66st4" path="res://player/player.tscn" id="2_oe8ih"]
+[ext_resource type="Script" uid="uid://dfxktoiik3q5r" path="res://pickup/pickup_spawner.gd" id="4_xuee5"]
+[ext_resource type="Script" uid="uid://flqqofccjmbu" path="res://enemies/enemy_spawner.gd" id="5_smepj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smepj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xuee5"]
+normal = Vector2(0, 1)
 
 [node name="Gameplay" type="Node"]
 
@@ -15,4 +22,47 @@ texture = ExtResource("1_ej4tk")
 [node name="Player" parent="." instance=ExtResource("2_oe8ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.10748, 0.10748, 0.10748, 1)
+
+[node name="PickupSpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_ground_marker")]
+script = ExtResource("4_xuee5")
+_player = NodePath("../Player")
+_ground_marker = NodePath("Marker2D")
+_min_spawn_delay = 4.0
+_max_spawn_delay = 10.0
+
+[node name="Timer" type="Timer" parent="PickupSpawner"]
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="PickupSpawner"]
+position = Vector2(1, 365)
+
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_high_marker", "_low_marker")]
+script = ExtResource("5_smepj")
+_player = NodePath("../Player")
+_spawn_min_range = 800.0
+_spawn_max_range = 820.0
+_min_spawn_delay = 3.0
+_max_spawn_delay = 6.0
+_high_marker = NodePath("HighMarker")
+_low_marker = NodePath("LowMarker")
+
+[node name="LowMarker" type="Marker2D" parent="EnemySpawner"]
+position = Vector2(0, 249)
+
+[node name="HighMarker" type="Marker2D" parent="EnemySpawner"]
+position = Vector2(0, -337)
+
+[node name="LowerWorldBoundary" type="StaticBody2D" parent="."]
+position = Vector2(0, 305)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_smepj")
+
+[node name="HigherWorldBoundary" type="StaticBody2D" parent="."]
+position = Vector2(0, -301)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HigherWorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_xuee5")

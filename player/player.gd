@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 
 var _acceleration := 1700.0
 var _max_speed := 850.0
@@ -7,14 +9,24 @@ var _flipped := false
 var _look_tween_duration := 0.2
 var _look_tween: Tween
 var _look_angle := 15
+var _max_charges := 1
+var _current_charges := 0
 
 var _light_burst := load("res://player/light_burst.tscn") as PackedScene
 
 @onready var _sprite := %Sprite as Sprite2D
 @onready var _spit_pos := %SpitPosition as Marker2D
+@onready var _killable := %Killable as Killable
+
+signal charged
+signal charge_depleted
+
+func _ready():
+	_killable.killed.connect(_on_killed)
+
 
 func _process(_delta):
-	if Input.is_action_just_pressed("spit"):
+	if Input.is_action_just_pressed("spit") && _current_charges > 0:
 		_spit_light()
 
 
@@ -56,9 +68,32 @@ func _tween_look_at(angle: float):
 
 
 func _spit_light():
+	_current_charges -= 1
+	if _current_charges == 0:
+		charge_depleted.emit()
+	
+	velocity = Vector2.ZERO
+
 	var burst := _light_burst.instantiate() as Node2D
-	get_parent().add_child(burst)
 	burst.global_position = _spit_pos.global_position
+	get_parent().add_child(burst)
 	if _flipped:
 		burst.scale.x = -1
-	velocity = Vector2.ZERO
+
+
+func charge():
+	_current_charges = min(_max_charges, _current_charges + 1)
+	charged.emit()
+
+
+func is_charged():
+	return _current_charges > 0
+
+
+func _on_killed():
+	set_process(false)
+	set_physics_process(false)
+	visible = false
+	position = Vector2(-99999, 99999)
+	var timer = get_tree().create_timer(1.5)
+	timer.timeout.connect(get_tree().reload_current_scene)
