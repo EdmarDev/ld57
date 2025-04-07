@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://catc6xlq66st4"]
+[gd_scene load_steps=15 format=3 uid="uid://catc6xlq66st4"]
 
 [ext_resource type="Script" uid="uid://btm241f08floe" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://blbyk6v08f21s" path="res://player/fish.png" id="2_g1dw6"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://6erhhi6yldwb" path="res://player/killable.gd" id="4_yw30f"]
 [ext_resource type="AudioStream" uid="uid://3byc0v1se0ce" path="res://Sound/spit effect.mp3" id="5_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://cnepfhavwfu16" path="res://Sound/bite effect.mp3" id="6_g6k8r"]
+[ext_resource type="AudioStream" uid="uid://bf2h2q4ld3gis" path="res://Sound/collect 1 effect.mp3" id="7_hg6s5"]
+[ext_resource type="AudioStream" uid="uid://clnu887x3p4xk" path="res://Sound/collect 2 effect.mp3" id="8_8t03j"]
+[ext_resource type="AudioStream" uid="uid://cvcpr4grtup24" path="res://Sound/collect 3 effect.mp3" id="9_2ieo8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 20.0
@@ -85,3 +88,17 @@ pitch_scale = 0.62
 stream = ExtResource("6_g6k8r")
 volume_db = 11.885
 pitch_scale = 0.62
+
+[node name="Charge" type="Node2D" parent="SFX"]
+
+[node name="ChargeA" type="AudioStreamPlayer2D" parent="SFX/Charge"]
+stream = ExtResource("7_hg6s5")
+volume_db = 6.933
+
+[node name="ChargeB" type="AudioStreamPlayer2D" parent="SFX/Charge"]
+stream = ExtResource("8_8t03j")
+volume_db = 10.895
+
+[node name="ChargeC" type="AudioStreamPlayer2D" parent="SFX/Charge"]
+stream = ExtResource("9_2ieo8")
+volume_db = 9.904

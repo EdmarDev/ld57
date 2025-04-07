@@ -19,6 +19,7 @@ var _light_burst := load("res://player/light_burst.tscn") as PackedScene
 @onready var _spit_pos := %SpitPosition as Marker2D
 @onready var _spit_sfx := $SFX/Spit as AudioStreamPlayer2D
 @onready var _death_sfx := $SFX/Death as AudioStreamPlayer2D
+@onready var _charge_sfxs := $SFX/Charge.get_children().map(func(child): return child as AudioStreamPlayer2D)
 
 signal charged
 signal charge_depleted
@@ -87,6 +88,7 @@ func _spit_light():
 
 func charge():
 	_current_charges = min(_max_charges, _current_charges + 1)
+	_charge_sfxs.pick_random().play()
 	charged.emit()
 
 
