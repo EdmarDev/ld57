@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4nkg28tadh3r"]
+
+[ext_resource type="Script" uid="uid://bmmhqix2vkavl" path="res://Sound/persistent_sfx.gd" id="1_ox8bq"]
+[ext_resource type="AudioStream" uid="uid://nao0nxhn4rj5" path="res://Sound/select effect.mp3" id="2_4er2x"]
+
+[node name="PersistentSFX" type="Node"]
+script = ExtResource("1_ox8bq")
+
+[node name="MenuSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4er2x")

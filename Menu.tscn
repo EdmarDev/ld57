@@ -81,7 +81,5 @@ stream = ExtResource("2_5yleq")
 autoplay = true
 parameters/looping = true
 
-[node name="AuSselect" type="AudioStreamPlayer" parent="."]
-
 [connection signal="pressed" from="VBoxContainer/bplay" to="." method="_on_bplay_pressed"]
 [connection signal="pressed" from="VBoxContainer/bexit" to="." method="_on_bexit_pressed"]
