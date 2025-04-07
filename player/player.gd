@@ -17,6 +17,8 @@ var _light_burst := load("res://player/light_burst.tscn") as PackedScene
 @export var killable: Killable
 @onready var _sprite := %Sprite as Sprite2D
 @onready var _spit_pos := %SpitPosition as Marker2D
+@onready var _spit_sfx := $SFX/Spit as AudioStreamPlayer2D
+@onready var _death_sfx := $SFX/Death as AudioStreamPlayer2D
 
 signal charged
 signal charge_depleted
@@ -79,6 +81,8 @@ func _spit_light():
 	get_parent().add_child(burst)
 	if _flipped:
 		burst.scale.x = -1
+	
+	_spit_sfx.play()
 
 
 func charge():
@@ -94,6 +98,6 @@ func _on_killed():
 	set_process(false)
 	set_physics_process(false)
 	visible = false
-	position = Vector2(-99999, 99999)
-	var timer = get_tree().create_timer(1.5)
+	_death_sfx.play()
+	var timer = get_tree().create_timer(3.5)
 	timer.timeout.connect(get_tree().reload_current_scene)

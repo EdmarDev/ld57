@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duchc23l0pbvp"
+path="res://.godot/imported/Sanity Unravels.MP3-c3dc6212c8e4e153c8e19e7a5de1e5f8.mp3str"
+
+[deps]
+
+source_file="res://Sound/Sanity Unravels.MP3"
+dest_files=["res://.godot/imported/Sanity Unravels.MP3-c3dc6212c8e4e153c8e19e7a5de1e5f8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

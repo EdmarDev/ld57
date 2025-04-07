@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://catc6xlq66st4"]
+[gd_scene load_steps=12 format=3 uid="uid://catc6xlq66st4"]
 
 [ext_resource type="Script" uid="uid://btm241f08floe" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://blbyk6v08f21s" path="res://player/fish.png" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://jtvj0fyuh15f" path="res://player/player_light.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://6erhhi6yldwb" path="res://player/killable.gd" id="4_yw30f"]
+[ext_resource type="AudioStream" uid="uid://3byc0v1se0ce" path="res://Sound/spit effect.mp3" id="5_qjkh3"]
+[ext_resource type="AudioStream" uid="uid://cnepfhavwfu16" path="res://Sound/bite effect.mp3" id="6_g6k8r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 20.0
@@ -71,3 +73,15 @@ _uncharged_energy = 3.0
 unique_name_in_owner = true
 script = ExtResource("4_yw30f")
 _delete_parent = false
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Spit" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_qjkh3")
+volume_db = 11.885
+pitch_scale = 0.62
+
+[node name="Death" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_g6k8r")
+volume_db = 11.885
+pitch_scale = 0.62

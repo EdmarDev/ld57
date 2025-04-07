@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6uu0dxbua4wq"]
+
+[ext_resource type="Script" uid="uid://ba87iqtwkkv7q" path="res://menu.gd" id="1_uubjt"]
+[ext_resource type="AudioStream" uid="uid://mn5qoian1uig" path="res://Sound/Underwater Vortex Sound Effect.MP3" id="2_5yleq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yleq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylpcl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx167"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dolsu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4eug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlksc"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uubjt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = 60.0
+offset_right = 248.0
+offset_bottom = -403.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Whale Fall"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05375
+anchor_top = 0.516667
+anchor_right = 0.4525
+anchor_bottom = 0.79
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="bplay" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_5yleq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ylpcl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cx167")
+text = "PLAY"
+
+[node name="bexit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 52
+theme_override_styles/hover = SubResource("StyleBoxTexture_dolsu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n4eug")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dlksc")
+text = "EXIT"
+
+[node name="AuSmusicmenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5yleq")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="VBoxContainer/bplay" to="." method="_on_bplay_pressed"]
+[connection signal="pressed" from="VBoxContainer/bexit" to="." method="_on_bexit_pressed"]
