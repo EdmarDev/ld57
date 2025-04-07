@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var _floating_speed := randf_range(15, 20)
+var _floating_speed := randf_range(20, 100)
 var _sway_distance := randf_range(-75, 75)
 var _sway_duration := randf_range(0.5, 2.0)
 var _sway_vector := Vector2.ZERO

@@ -22,12 +22,13 @@ normal = Vector2(0, 1)
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(0, -27)
-scale = Vector2(0.615278, 0.615278)
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("1_ej4tk")
 region_enabled = true
 region_rect = Rect2(0, 0, 5068.8, 2851.2)
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("_player")]
+zoom = Vector2(0.75, 0.75)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("2_smepj")
@@ -50,7 +51,7 @@ _max_spawn_delay = 8.0
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="PickupSpawner"]
-position = Vector2(1, 365)
+position = Vector2(1, 545)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_high_marker", "_low_marker")]
 script = ExtResource("5_smepj")
@@ -63,35 +64,38 @@ _high_marker = NodePath("HighMarker")
 _low_marker = NodePath("LowMarker")
 
 [node name="LowMarker" type="Marker2D" parent="EnemySpawner"]
-position = Vector2(0, 249)
+position = Vector2(0, 342)
 
 [node name="HighMarker" type="Marker2D" parent="EnemySpawner"]
-position = Vector2(0, -428)
+position = Vector2(0, -572)
 
-[node name="LowerWorldBoundary" type="StaticBody2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(1.333, 1.333)
+
+[node name="LowerWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, 305)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWorldBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LowerWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_smepj")
 
-[node name="LeftWorldBoundary" type="StaticBody2D" parent="."]
+[node name="LeftWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-1200, 0)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWorldBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LeftWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_cbffv")
 
-[node name="RightWorldBoundary" type="StaticBody2D" parent="."]
+[node name="RightWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(1200, 0)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWorldBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RightWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_fbudy")
 
-[node name="HigherWorldBoundary" type="StaticBody2D" parent="."]
+[node name="HigherWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -450)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HigherWorldBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/HigherWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_xuee5")

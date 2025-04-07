@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 
-var _acceleration := 1700.0
-var _max_speed := 850.0
-var _drag := 1000.0
+@export var _acceleration := 1700.0
+@export var _max_speed := 850.0
+@export var _drag := 1000.0
 var _flipped := false
 var _look_tween_duration := 0.2
 var _look_tween: Tween
