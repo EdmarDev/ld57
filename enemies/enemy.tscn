@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://o520a5hfntr2"]
+[gd_scene load_steps=21 format=3 uid="uid://o520a5hfntr2"]
 
 [ext_resource type="Script" uid="uid://d2kteb84xkaa5" path="res://enemies/enemy.gd" id="1_a6vjd"]
 [ext_resource type="Script" uid="uid://dy4qwn25ddjl4" path="res://enemies/linear_walker.gd" id="1_orwns"]
@@ -23,7 +23,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7frlh"]
-radius = 52.0865
+radius = 19.0263
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epsnb"]
+radius = 45.0111
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4w5fm"]
+radius = 34.0588
 
 [sub_resource type="Gradient" id="Gradient_wrnuo"]
 offsets = PackedFloat32Array(0, 0.733766)
@@ -133,8 +139,16 @@ flip_h = true
 script = ExtResource("2_7frlh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
-position = Vector2(2, -1)
+position = Vector2(-18, 0)
 shape = SubResource("CircleShape2D_7frlh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(21, 13)
+shape = SubResource("CircleShape2D_epsnb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(57, 49)
+shape = SubResource("CircleShape2D_4w5fm")
 
 [node name="Light" type="Node2D" parent="."]
 position = Vector2(110, 0)
@@ -156,6 +170,7 @@ libraries = {
 autoplay = "sway"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_a6vjd")
 
