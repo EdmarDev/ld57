@@ -38,6 +38,9 @@ position_smoothing_enabled = true
 script = ExtResource("2_smepj")
 _player = NodePath("../Player")
 _bounds = Rect2(0, 0, 200, 400)
+_max_x = 1090.0
+_max_height = 75.0
+_min_height = -220.0
 
 [node name="Player" parent="." instance=ExtResource("2_oe8ih")]
 

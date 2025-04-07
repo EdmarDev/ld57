@@ -3,6 +3,10 @@ extends Camera2D
 
 @export var _player: Player
 @export var _bounds: Rect2
+@export var _max_x := 900.0
+@export var _max_height := 100.0
+@export var _min_height := -20.0
+
 var _tween: Tween
 var _tween_duration := 0.175
 
@@ -27,6 +31,9 @@ func _process(_delta):
 			y_diff = player_pos.y - _bounds.position.y
 		
 		var target_pos = global_position + Vector2(x_diff, y_diff)
+		target_pos.x = clamp(target_pos.x, -_max_x, _max_x)
+		target_pos.y = clamp(target_pos.y, _min_height, _max_height)
+		
 		if !!_tween:
 			_tween.kill()
 		_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
