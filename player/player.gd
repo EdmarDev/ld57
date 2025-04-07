@@ -14,15 +14,15 @@ var _current_charges := 0
 
 var _light_burst := load("res://player/light_burst.tscn") as PackedScene
 
+@export var killable: Killable
 @onready var _sprite := %Sprite as Sprite2D
 @onready var _spit_pos := %SpitPosition as Marker2D
-@onready var _killable := %Killable as Killable
 
 signal charged
 signal charge_depleted
 
 func _ready():
-	_killable.killed.connect(_on_killed)
+	killable.killed.connect(_on_killed)
 
 
 func _process(_delta):

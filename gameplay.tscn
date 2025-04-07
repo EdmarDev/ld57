@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjyafkeljrhm5"]
+[gd_scene load_steps=10 format=3 uid="uid://cjyafkeljrhm5"]
 
 [ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://catc6xlq66st4" path="res://player/player.tscn" id="2_oe8ih"]
+[ext_resource type="Script" uid="uid://b227ck7kkn3hw" path="res://player/player_camera.gd" id="2_smepj"]
 [ext_resource type="Script" uid="uid://dfxktoiik3q5r" path="res://pickup/pickup_spawner.gd" id="4_xuee5"]
 [ext_resource type="Script" uid="uid://flqqofccjmbu" path="res://enemies/enemy_spawner.gd" id="5_smepj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smepj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cbffv"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fbudy"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xuee5"]
 normal = Vector2(0, 1)
@@ -13,11 +20,19 @@ normal = Vector2(0, 1)
 [node name="Gameplay" type="Node"]
 
 [node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
 position = Vector2(0, -27)
 scale = Vector2(0.615278, 0.615278)
 texture = ExtResource("1_ej4tk")
+region_enabled = true
+region_rect = Rect2(0, 0, 5068.8, 2851.2)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("_player")]
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("2_smepj")
+_player = NodePath("../Player")
+_bounds = Rect2(0, 0, 200, 400)
 
 [node name="Player" parent="." instance=ExtResource("2_oe8ih")]
 
@@ -28,8 +43,8 @@ color = Color(0.10748, 0.10748, 0.10748, 1)
 script = ExtResource("4_xuee5")
 _player = NodePath("../Player")
 _ground_marker = NodePath("Marker2D")
-_min_spawn_delay = 4.0
-_max_spawn_delay = 10.0
+_min_spawn_delay = 3.0
+_max_spawn_delay = 8.0
 
 [node name="Timer" type="Timer" parent="PickupSpawner"]
 autostart = true
@@ -40,10 +55,10 @@ position = Vector2(1, 365)
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_high_marker", "_low_marker")]
 script = ExtResource("5_smepj")
 _player = NodePath("../Player")
-_spawn_min_range = 800.0
-_spawn_max_range = 820.0
-_min_spawn_delay = 3.0
-_max_spawn_delay = 6.0
+_spawn_min_range = 850.0
+_spawn_max_range = 1000.0
+_min_spawn_delay = 2.0
+_max_spawn_delay = 5.0
 _high_marker = NodePath("HighMarker")
 _low_marker = NodePath("LowMarker")
 
@@ -51,7 +66,7 @@ _low_marker = NodePath("LowMarker")
 position = Vector2(0, 249)
 
 [node name="HighMarker" type="Marker2D" parent="EnemySpawner"]
-position = Vector2(0, -337)
+position = Vector2(0, -428)
 
 [node name="LowerWorldBoundary" type="StaticBody2D" parent="."]
 position = Vector2(0, 305)
@@ -60,8 +75,22 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_smepj")
 
+[node name="LeftWorldBoundary" type="StaticBody2D" parent="."]
+position = Vector2(-1200, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_cbffv")
+
+[node name="RightWorldBoundary" type="StaticBody2D" parent="."]
+position = Vector2(1200, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_fbudy")
+
 [node name="HigherWorldBoundary" type="StaticBody2D" parent="."]
-position = Vector2(0, -301)
+position = Vector2(0, -450)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HigherWorldBoundary"]

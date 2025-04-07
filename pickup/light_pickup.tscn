@@ -41,6 +41,7 @@ script = ExtResource("1_vayye")
 scale = Vector2(0.733333, 0.733333)
 rect = Rect2(-100, -100, 200, 200)
 script = ExtResource("2_wrnuo")
+_minimum_time = 20.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(4.58205e-05, 0.804996, 0.96888, 1)
