@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dir0q1ib2tpl"]
+[gd_scene load_steps=9 format=3 uid="uid://b6uu0dxbua4wq"]
 
-[ext_resource type="Script" uid="uid://ba87iqtwkkv7q" path="res://menu.gd" id="1_uubjt"]
+[ext_resource type="Script" path="res://menu.gd" id="1_uubjt"]
 [ext_resource type="AudioStream" uid="uid://mn5qoian1uig" path="res://Sound/Underwater Vortex Sound Effect.MP3" id="2_5yleq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yleq"]
