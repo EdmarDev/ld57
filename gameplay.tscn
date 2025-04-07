@@ -85,21 +85,21 @@ shape = SubResource("WorldBoundaryShape2D_smepj")
 
 [node name="LeftWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(-1200, 0)
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LeftWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_cbffv")
 
 [node name="RightWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(1200, 0)
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RightWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_fbudy")
 
 [node name="HigherWorldBoundary" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -450)
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/HigherWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_xuee5")
