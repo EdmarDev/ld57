@@ -183,4 +183,4 @@ metadata/_custom_type_script = "uid://d05fwi2rqf4n2"
 
 [node name="LightBurstDetector" type="Node2D" parent="."]
 script = ExtResource("6_3t1x0")
-_detection_range = 150.0
+_detection_range = 220.0
