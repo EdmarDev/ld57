@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clnu887x3p4xk"
+path="res://.godot/imported/collect 2 effect.mp3-c457796786848679a09edcd2b5055c20.mp3str"
+
+[deps]
+
+source_file="res://Sound/collect 2 effect.mp3"
+dest_files=["res://.godot/imported/collect 2 effect.mp3-c457796786848679a09edcd2b5055c20.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

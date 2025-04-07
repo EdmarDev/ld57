@@ -1,11 +1,26 @@
-[gd_scene load_steps=17 format=3 uid="uid://o520a5hfntr2"]
+[gd_scene load_steps=19 format=3 uid="uid://o520a5hfntr2"]
 
 [ext_resource type="Script" uid="uid://d2kteb84xkaa5" path="res://enemies/enemy.gd" id="1_a6vjd"]
-[ext_resource type="Texture2D" uid="uid://dn3y48ug25aij" path="res://fish2.png" id="1_fw1ev"]
 [ext_resource type="Script" uid="uid://dy4qwn25ddjl4" path="res://enemies/linear_walker.gd" id="1_orwns"]
 [ext_resource type="Script" uid="uid://bx8y3v1iyo1qn" path="res://enemies/kill_area.gd" id="2_7frlh"]
+[ext_resource type="Texture2D" uid="uid://1egidpb0f7e4" path="res://enemies/Angler fish/anglerfish 1.png" id="3_3t1x0"]
+[ext_resource type="Texture2D" uid="uid://duwnx6onvk3nd" path="res://enemies/Angler fish/anglerfish 2.png" id="4_epsnb"]
 [ext_resource type="Script" uid="uid://d05fwi2rqf4n2" path="res://visibility_despawner.gd" id="5_07tka"]
 [ext_resource type="Script" uid="uid://db5kcbw0qqb68" path="res://enemies/light_burst_detector.gd" id="6_3t1x0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epsnb"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("3_3t1x0")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_epsnb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7frlh"]
 radius = 52.0865
@@ -38,6 +53,31 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.85, 0.85)
 
+[sub_resource type="Animation" id="Animation_7frlh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(110, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Light:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_fw1ev"]
 resource_name = "sway"
 length = 4.0
@@ -65,31 +105,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.99, 1.7, 3.1, 4)
 }
 
-[sub_resource type="Animation" id="Animation_7frlh"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Light:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(110, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Light:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orwns"]
 _data = {
 &"RESET": SubResource("Animation_7frlh"),
@@ -109,9 +124,10 @@ script = ExtResource("1_orwns")
 _enemy = NodePath("..")
 _light_burst_detector = NodePath("../LightBurstDetector")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.07995, 2.76533)
-texture = ExtResource("1_fw1ev")
+[node name="spr_angler" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_epsnb")
+frame_progress = 0.0988808
+flip_h = true
 
 [node name="KillArea" type="Area2D" parent="."]
 script = ExtResource("2_7frlh")

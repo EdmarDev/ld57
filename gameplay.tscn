@@ -1,10 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjyafkeljrhm5"]
+[gd_scene load_steps=18 format=3 uid="uid://cjyafkeljrhm5"]
 
 [ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_ej4tk"]
+[ext_resource type="Script" uid="uid://drryejaqbc1mg" path="res://gameplay.gd" id="1_fbudy"]
 [ext_resource type="PackedScene" uid="uid://catc6xlq66st4" path="res://player/player.tscn" id="2_oe8ih"]
 [ext_resource type="Script" uid="uid://b227ck7kkn3hw" path="res://player/player_camera.gd" id="2_smepj"]
 [ext_resource type="Script" uid="uid://dfxktoiik3q5r" path="res://pickup/pickup_spawner.gd" id="4_xuee5"]
 [ext_resource type="Script" uid="uid://flqqofccjmbu" path="res://enemies/enemy_spawner.gd" id="5_smepj"]
+[ext_resource type="AudioStream" uid="uid://duchc23l0pbvp" path="res://Sound/Sanity Unravels.MP3" id="7_0m7cd"]
+[ext_resource type="AudioStream" uid="uid://3byc0v1se0ce" path="res://Sound/spit effect.mp3" id="8_0m7cd"]
+[ext_resource type="AudioStream" uid="uid://cnepfhavwfu16" path="res://Sound/bite effect.mp3" id="9_tyrfw"]
+[ext_resource type="AudioStream" uid="uid://c4j0kf21ja3pq" path="res://Sound/restart effect.mp3" id="10_eod45"]
+[ext_resource type="AudioStream" uid="uid://bf2h2q4ld3gis" path="res://Sound/collect 1 effect.mp3" id="11_nwk8b"]
+[ext_resource type="AudioStream" uid="uid://clnu887x3p4xk" path="res://Sound/collect 2 effect.mp3" id="12_x2ust"]
+[ext_resource type="AudioStream" uid="uid://cvcpr4grtup24" path="res://Sound/collect 3 effect.mp3" id="13_7y1a3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smepj"]
 
@@ -18,6 +26,7 @@ normal = Vector2(-1, 0)
 normal = Vector2(0, 1)
 
 [node name="Gameplay" type="Node"]
+script = ExtResource("1_fbudy")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -99,3 +108,42 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/HigherWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_xuee5")
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="AuSmusicgame" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("7_0m7cd")
+volume_db = -3.0
+pitch_scale = 0.53
+autoplay = true
+parameters/looping = true
+
+[node name="AuSPspit" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("8_0m7cd")
+volume_db = 11.885
+pitch_scale = 0.62
+
+[node name="AuSPbite" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("9_tyrfw")
+volume_db = 11.885
+pitch_scale = 0.62
+
+[node name="AuSrespawn" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("10_eod45")
+autoplay = true
+
+[node name="AuSselect" type="AudioStreamPlayer" parent="sounds"]
+
+[node name="sound pickup" type="Node" parent="sounds"]
+
+[node name="AuSPpick1" type="AudioStreamPlayer2D" parent="sounds/sound pickup"]
+stream = ExtResource("11_nwk8b")
+volume_db = 6.933
+
+[node name="AuSPpick2" type="AudioStreamPlayer2D" parent="sounds/sound pickup"]
+stream = ExtResource("12_x2ust")
+volume_db = 10.895
+
+[node name="AuSPpick3" type="AudioStreamPlayer2D" parent="sounds/sound pickup"]
+stream = ExtResource("13_7y1a3")
+volume_db = 9.904

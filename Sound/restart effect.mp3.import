@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4j0kf21ja3pq"
+path="res://.godot/imported/restart effect.mp3-75226481354a6462a23ef8bf038579e9.mp3str"
+
+[deps]
+
+source_file="res://Sound/restart effect.mp3"
+dest_files=["res://.godot/imported/restart effect.mp3-75226481354a6462a23ef8bf038579e9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

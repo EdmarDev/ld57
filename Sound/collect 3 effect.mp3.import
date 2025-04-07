@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvcpr4grtup24"
+path="res://.godot/imported/collect 3 effect.mp3-f15916f2ddbee8ae83bf9c2527e520c0.mp3str"
+
+[deps]
+
+source_file="res://Sound/collect 3 effect.mp3"
+dest_files=["res://.godot/imported/collect 3 effect.mp3-f15916f2ddbee8ae83bf9c2527e520c0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
