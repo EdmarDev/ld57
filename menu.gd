@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 
 func _on_bplay_pressed() -> void:
 	get_tree().change_scene_to_file("res://gameplay.tscn")
-	$sounds/AuSselect.play()
+	$AuSselect.play()
 
 func _on_bexit_pressed() -> void:
 	get_tree().quit()
