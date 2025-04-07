@@ -67,8 +67,8 @@ script = ExtResource("3_g1dw6")
 _player = NodePath("..")
 _charged_color = Color(0.2425, 0.84875, 0.97, 1)
 _uncharged_color = Color(0.798721, 0.872677, 0.887664, 1)
-_charged_tex_scale = 2.2
-_uncharged_tex_scale = 2.0
+_charged_tex_scale = 3.5
+_uncharged_tex_scale = 3.0
 _charged_energy = 3.5
 _uncharged_energy = 3.0
 

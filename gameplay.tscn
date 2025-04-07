@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjyafkeljrhm5"]
+[gd_scene load_steps=15 format=3 uid="uid://cjyafkeljrhm5"]
 
 [ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_ej4tk"]
 [ext_resource type="Script" uid="uid://drryejaqbc1mg" path="res://gameplay.gd" id="1_fbudy"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://dfxktoiik3q5r" path="res://pickup/pickup_spawner.gd" id="4_xuee5"]
 [ext_resource type="Script" uid="uid://flqqofccjmbu" path="res://enemies/enemy_spawner.gd" id="5_smepj"]
 [ext_resource type="AudioStream" uid="uid://duchc23l0pbvp" path="res://Sound/Sanity Unravels.MP3" id="7_0m7cd"]
+[ext_resource type="PackedScene" uid="uid://o520a5hfntr2" path="res://enemies/Angler fish/angler.tscn" id="7_1qy1k"]
+[ext_resource type="PackedScene" uid="uid://rryp0ascwqy6" path="res://enemies/Jelly fish/jellyfish.tscn" id="8_3n40r"]
 [ext_resource type="AudioStream" uid="uid://c4j0kf21ja3pq" path="res://Sound/restart effect.mp3" id="10_eod45"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smepj"]
@@ -45,7 +47,7 @@ _min_height = -220.0
 [node name="Player" parent="." instance=ExtResource("2_oe8ih")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.10748, 0.10748, 0.10748, 1)
+color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [node name="PickupSpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_ground_marker")]
 script = ExtResource("4_xuee5")
@@ -60,7 +62,7 @@ autostart = true
 [node name="Marker2D" type="Marker2D" parent="PickupSpawner"]
 position = Vector2(1, 545)
 
-[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_high_marker", "_low_marker")]
+[node name="AnglerSpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_high_marker", "_low_marker")]
 script = ExtResource("5_smepj")
 _player = NodePath("../Player")
 _spawn_min_range = 850.0
@@ -69,12 +71,29 @@ _min_spawn_delay = 2.0
 _max_spawn_delay = 5.0
 _high_marker = NodePath("HighMarker")
 _low_marker = NodePath("LowMarker")
+_enemy_scene = ExtResource("7_1qy1k")
 
-[node name="LowMarker" type="Marker2D" parent="EnemySpawner"]
+[node name="LowMarker" type="Marker2D" parent="AnglerSpawner"]
 position = Vector2(0, 342)
 
-[node name="HighMarker" type="Marker2D" parent="EnemySpawner"]
+[node name="HighMarker" type="Marker2D" parent="AnglerSpawner"]
 position = Vector2(0, -572)
+
+[node name="JellyfishSpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player", "_high_marker", "_low_marker")]
+script = ExtResource("5_smepj")
+_player = NodePath("../Player")
+_spawn_max_range = 900.0
+_min_spawn_delay = 2.0
+_max_spawn_delay = 5.0
+_high_marker = NodePath("HighMarker")
+_low_marker = NodePath("LowMarker")
+_enemy_scene = ExtResource("8_3n40r")
+
+[node name="LowMarker" type="Marker2D" parent="JellyfishSpawner"]
+position = Vector2(0, 342)
+
+[node name="HighMarker" type="Marker2D" parent="JellyfishSpawner"]
+position = Vector2(0, 70)
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(1.333, 1.333)
