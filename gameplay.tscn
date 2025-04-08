@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjyafkeljrhm5"]
+[gd_scene load_steps=16 format=3 uid="uid://cjyafkeljrhm5"]
 
 [ext_resource type="Texture2D" uid="uid://dbrdpuxwvt7is" path="res://test-bg.png" id="1_ej4tk"]
 [ext_resource type="Script" uid="uid://drryejaqbc1mg" path="res://gameplay.gd" id="1_fbudy"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://duchc23l0pbvp" path="res://Sound/Sanity Unravels.MP3" id="7_0m7cd"]
 [ext_resource type="PackedScene" uid="uid://o520a5hfntr2" path="res://enemies/Angler fish/angler.tscn" id="7_1qy1k"]
 [ext_resource type="PackedScene" uid="uid://rryp0ascwqy6" path="res://enemies/Jelly fish/jellyfish.tscn" id="8_3n40r"]
+[ext_resource type="Script" uid="uid://5rw5c18rs51t" path="res://enemies/Vampire squid/squid_spawner.gd" id="9_45aep"]
 [ext_resource type="AudioStream" uid="uid://c4j0kf21ja3pq" path="res://Sound/restart effect.mp3" id="10_eod45"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smepj"]
@@ -94,6 +95,15 @@ position = Vector2(0, 342)
 
 [node name="HighMarker" type="Marker2D" parent="JellyfishSpawner"]
 position = Vector2(0, 70)
+
+[node name="SquidSpawner" type="Node2D" parent="." node_paths=PackedStringArray("_player")]
+script = ExtResource("9_45aep")
+_player = NodePath("../Player")
+_spawn_min_range = 700.0
+_spawn_max_range = 900.0
+_min_spawn_delay = 4.0
+_max_spawn_delay = 10.0
+_target_offset_range = 20
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(1.333, 1.333)

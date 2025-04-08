@@ -31,12 +31,12 @@ radius = 45.0111
 [sub_resource type="CircleShape2D" id="CircleShape2D_4w5fm"]
 radius = 34.0588
 
-[sub_resource type="Gradient" id="Gradient_wrnuo"]
+[sub_resource type="Gradient" id="Gradient_e38kg"]
 offsets = PackedFloat32Array(0, 0.733766)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fw1ev"]
-gradient = SubResource("Gradient_wrnuo")
+gradient = SubResource("Gradient_e38kg")
 width = 192
 height = 192
 fill = 1
@@ -75,7 +75,7 @@ _light_burst_detector = NodePath("../LightBurstDetector")
 [node name="spr_angler" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_epsnb")
 autoplay = "default"
-frame_progress = 0.0093065
+frame_progress = 0.344901
 flip_h = true
 
 [node name="KillArea" type="Area2D" parent="."]

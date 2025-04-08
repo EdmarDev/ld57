@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvbinav5fu4u"]
+
+[ext_resource type="Script" uid="uid://bopl67i75ihgc" path="res://enemies/Vampire squid/squid.gd" id="1_gwmth"]
+[ext_resource type="Texture2D" uid="uid://74rvjwvhu22i" path="res://enemies/Vampire squid/vampiresquid 1.png" id="1_wmqok"]
+[ext_resource type="Texture2D" uid="uid://oy4g8slll86w" path="res://enemies/Vampire squid/vampiresquid 2.png" id="2_x4usk"]
+[ext_resource type="Texture2D" uid="uid://b7kwn51bg705k" path="res://enemies/Vampire squid/vampiresquid 3.png" id="3_gsi5f"]
+[ext_resource type="Script" uid="uid://bx8y3v1iyo1qn" path="res://enemies/kill_area.gd" id="4_gsi5f"]
+[ext_resource type="Script" uid="uid://d05fwi2rqf4n2" path="res://visibility_despawner.gd" id="5_gwmth"]
+[ext_resource type="Script" uid="uid://db5kcbw0qqb68" path="res://enemies/light_burst_detector.gd" id="7_xy2yb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwmth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wmqok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x4usk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gsi5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x4usk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_xy2yb"]
+offsets = PackedFloat32Array(0, 0.733766)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o5o1f"]
+gradient = SubResource("Gradient_xy2yb")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xy2yb"]
+radius = 33.0606
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwmth"]
+radius = 47.0425
+
+[node name="Squid" type="Node2D" node_paths=PackedStringArray("_light_burst_detector")]
+script = ExtResource("1_gwmth")
+_light_burst_detector = NodePath("LightBurstDetector")
+_max_y = 320.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gwmth")
+autoplay = "default"
+frame_progress = 0.00708197
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-4, -35)
+color = Color(0.97, 0.129333, 0, 1)
+energy = 3.0
+texture = SubResource("GradientTexture2D_o5o1f")
+texture_scale = 1.25
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_gsi5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5, -35)
+shape = SubResource("CircleShape2D_xy2yb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 15)
+shape = SubResource("CircleShape2D_gwmth")
+
+[node name="VisibilityDespawner" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.5, 18.5)
+scale = Vector2(9.15, 8.25)
+script = ExtResource("5_gwmth")
+_minimum_time = 80.0
+metadata/_custom_type_script = "uid://d05fwi2rqf4n2"
+
+[node name="LightBurstDetector" type="Node2D" parent="."]
+script = ExtResource("7_xy2yb")
+_detection_range = 220.0
