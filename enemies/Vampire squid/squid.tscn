@@ -53,7 +53,7 @@ _max_y = 320.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gwmth")
 autoplay = "default"
-frame_progress = 0.00708197
+frame_progress = 0.360797
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-4, -35)
