@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6uu0dxbua4wq"]
+[gd_scene load_steps=10 format=3 uid="uid://b6uu0dxbua4wq"]
 
 [ext_resource type="Script" uid="uid://ba87iqtwkkv7q" path="res://menu.gd" id="1_uubjt"]
 [ext_resource type="AudioStream" uid="uid://mn5qoian1uig" path="res://Sound/Underwater Vortex Sound Effect.MP3" id="2_5yleq"]
+[ext_resource type="Texture2D" uid="uid://cpi8304d84p12" path="res://menubg.png" id="2_ylpcl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yleq"]
 
@@ -24,15 +25,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uubjt")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_ylpcl")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
