@@ -32,7 +32,42 @@ script = ExtResource("1_fbudy")
 scroll_scale = Vector2(0.2, 0.2)
 
 [node name="Bg" type="Sprite2D" parent="Background/Black"]
-position = Vector2(0, 100)
+position = Vector2(0, -340)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg2" type="Sprite2D" parent="Background/Black"]
+position = Vector2(2272, -340)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg3" type="Sprite2D" parent="Background/Black"]
+position = Vector2(-2187, -340)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg4" type="Sprite2D" parent="Background/Black"]
+position = Vector2(4552, -340)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg5" type="Sprite2D" parent="Background/Black"]
+position = Vector2(0, 905)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg6" type="Sprite2D" parent="Background/Black"]
+position = Vector2(2272, 905)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg7" type="Sprite2D" parent="Background/Black"]
+position = Vector2(-2187, 905)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2em84")
+
+[node name="Bg8" type="Sprite2D" parent="Background/Black"]
+position = Vector2(4552, 905)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_2em84")
 
